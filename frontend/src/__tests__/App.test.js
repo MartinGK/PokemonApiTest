@@ -1,43 +1,35 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import App from 'App';
-import {findByTestAttr} from 'helpers/testUtils'
+import { findByTestAttr } from 'helpers/testUtils'
 
-const setup = () =>{
+const setup = () => {
     return shallow(<App />);
 }
 
-describe("App rendering",()=>{
+describe("App rendering", () => {
     let wrapper;
-    beforeEach(()=>{
+    beforeEach(() => {
         wrapper = setup();
     })
 
-    afterEach(()=>{
+    afterEach(() => {
         wrapper.unmount();
     })
 
-    test("page-title rendering",()=>{
-        const component = findByTestAttr(wrapper, "page-title");
+    test("page-header rendering", () => {
+        const component = findByTestAttr(wrapper, "page-header");
         expect(component.exists()).toBe(true);
     })
-    test("page-subtitle rendering",()=>{
-        const component = findByTestAttr(wrapper, "page-subtitle");
+    test("pokemons-finder rendering", () => {
+        const component = findByTestAttr(wrapper, "pokemons-finder");
         expect(component.exists()).toBe(true);
     })
-    test("search-input rendering",()=>{
-        const component = findByTestAttr(wrapper, "search-input");
+    test("pokemons-result rendering", () => {
+        const component = findByTestAttr(wrapper, "pokemons-result");
         expect(component.exists()).toBe(true);
     })
-    test("search-button rendering",()=>{
-        const component = findByTestAttr(wrapper, "search-button");
-        expect(component.exists()).toBe(true);
-    })
-    test("search-result-container rendering",()=>{
-        const component = findByTestAttr(wrapper, "search-result-container");
-        expect(component.exists()).toBe(true);
-    })
-    test("page-footer rendering",()=>{
+    test("page-footer rendering", () => {
         const component = findByTestAttr(wrapper, "page-footer");
         expect(component.exists()).toBe(true);
     })
