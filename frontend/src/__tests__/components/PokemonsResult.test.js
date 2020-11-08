@@ -1,23 +1,36 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import PokemonsResult from 'components/PokemonsResult';
+import { Provider } from "react-redux";
 import { findByTestAttr, storeFactory } from 'helpers/testUtils'
 
-const setup = (initialState={}) => {
+const setup = (initialState = {}) => {
     const store = storeFactory(initialState);
-    const wrapper = shallow(<PokemonsResult store={store}/>).dive().dive();
+    const wrapper = shallow(<Provider store={store}>
+        <PokemonsResult store={store} />
+    </Provider>).dive().dive();
     console.log(wrapper.debug())
     console.log(wrapper.dive())
     return wrapper;
 }
 
 describe("PokemonsResult rendering", () => {
-    let wrapper;
     describe("without pokemons", () => {
         let wrapper;
 
         beforeEach(() => {
-            wrapper = setup();
+            wrapper = setup({
+                pokemons: {
+                    error: '',
+                    result: [
+                        {
+                            name: 'pikachu',
+                            sprites: {
+                                front_default: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png',
+                            },
+                        }]
+                }
+            });
         })
 
         afterEach(() => {

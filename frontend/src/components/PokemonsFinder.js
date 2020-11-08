@@ -16,7 +16,10 @@ const useStyles = makeStyles((theme) => ({
         }
     },
     searchInputButton: {
-        alignSelf: 'center'
+        // alignSelf: 'center',
+        // background: "linear-gradient(180deg, rgba(255,28,28,1) 0%, rgba(255,28,28,1) 49%, rgba(0,0,0,1) 50%, rgba(255,255,255,1) 51%, rgba(255,255,255,1) 100%)",
+        // fontWeight:"bolder",
+        // color:"black"
     }
 }));
 
@@ -30,7 +33,7 @@ export default function PokemonsFinder() {
     }
 
     return (
-        <Grid container component="div" spacing={3} xs>
+        <Grid container component="div" spacing={3} >
             <Grid item xs={8}>
                 {/* Pokemons Finder */}
                 <TextField
@@ -45,7 +48,7 @@ export default function PokemonsFinder() {
                     className={classes.pokemonInput}
                 />
             </Grid>
-            <Grid item xs={4}>
+            <Grid item xs={3}>
                 <Button
                     variant="contained"
                     color="primary"

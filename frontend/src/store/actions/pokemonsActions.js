@@ -8,7 +8,7 @@ export const getPokemons = (name) => dispatch => {
         .then(data => {
             dispatch({
                 type: POKEMONS_UPDATE,
-                payload: [data]
+                payload: [data,data,data,data,data,data,data,data,data,data,data,data,data,data,data,data,data,data,data,data,data,data,data,data]
             })
         }).catch(error => {
             dispatch({

@@ -7,17 +7,16 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default function PageFooter() {
     return (
-        <Grid container spacing={3} component="div" xs>
+        <Grid container spacing={3} component="div" >
             <Grid item xs={12}>
                 <Divider data-test="divider" />
             </Grid>
             <Grid item xs={7}>
-                {/* Add TYPOGRAPHY here */}
                 <Typography data-test="copyright">
                     Hecho por MartinGK
                 </Typography>
             </Grid>
-            <Grid item xs={5} >
+            <Grid item xs={4} >
                 <Button variant="contained" color="primary" fullWidth data-test="repo-button" >
                     Link a mi repo
       </Button>

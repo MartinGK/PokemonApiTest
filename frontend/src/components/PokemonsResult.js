@@ -6,6 +6,7 @@ import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import List from '@material-ui/core/List';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
+import Box from '@material-ui/core/Box';
 import { useSelector } from 'react-redux';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -13,6 +14,25 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
     pokemonName: {
         textTransform: "capitalize"
+    },
+    resultList: {
+        overflowY: 'scroll',
+        position: "absolute",
+        left: 0,
+        top: 0,
+        width: "100%",
+        height: "100%",
+        padding: 0
+        // maxHeight: '22rem'
+    },
+    searchResultContainer: {
+        display: "grid",
+        gridTemplateRows: "1fr 8fr",
+        gridGap: "10px"
+    },
+    listItem: {
+        padding: "20px 10px",
+        width: "90%"
     }
 }));
 
@@ -27,35 +47,32 @@ export default function PokemonsResult() {
     // }, [pokemons])
 
     return (
-        <Grid container component="div" spacing={3} xs>
-            <Grid item xs={12} data-test="search-result-container" component="div">
-                {/* TODO: SEARCH RESULT */}
-                <Typography variant="h3" component="h2" data-test="container-title">
-                    Resultados de la Busqueda
+        <Grid container component="div" spacing={3} data-test="search-result-container" className={classes.searchResultContainer}>
+            <Typography variant="h3" component="h2" data-test="container-title">
+                Resultados de la Búsqueda
   </Typography>
-                <Grid item xs={12} component="div" data-test="result-container">
-                    {/* TESTEAR QUE EXISTE O NO EL POKEMON-LIST */}
-                    {pokemons && pokemons.length ?
-                        <List data-test="pokemon-list">
+            {/* TESTEAR QUE EXISTE O NO EL POKEMON-LIST */}
+            <Box style={{ position: "relative", width: "100%" }} data-test="result-container">
+                {pokemons && pokemons.length ?
+                    <List data-test="pokemon-list" className={classes.resultList}>
 
-                            {pokemons.map(poke => {
-                                return <>
-                                    <ListItem alignItems="center">
-                                        <ListItemAvatar>
-                                            <img src={poke.sprites.front_default} alt={poke.name} />
-                                        </ListItemAvatar>
-                                        <ListItemText
-                                            className={classes.pokemonName}
-                                            primary={poke.name}
-                                        />
-                                    </ListItem>
-                                    <Divider component="li" />
-                                </>
-                            })}
-                        </List>
-                        : null}
-                </Grid>
-            </Grid>
+                        {pokemons.map(poke => {
+                            return <>
+                                <ListItem alignItems="center" className={classes.listItem}>
+                                    <ListItemAvatar>
+                                        <img src={poke.sprites.front_default} alt={poke.name} />
+                                    </ListItemAvatar>
+                                    <ListItemText
+                                        className={classes.pokemonName}
+                                        primary={poke.name}
+                                    />
+                                </ListItem>
+                            </>
+                        })}
+                    </List>
+                    : null}
+
+            </Box>
         </Grid>
     )
 }

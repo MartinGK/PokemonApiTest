@@ -1,5 +1,5 @@
 import checkPropTypes from "check-prop-types";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { createStore } from 'redux';
 import rootReducers from 'store/reducers';
 
@@ -19,7 +19,8 @@ export const storeFactory = (initialState) => {
  */
 jest.mock("react-redux", () => ({
     ...jest.requireActual("react-redux"),
-    useSelector: jest.fn
+    useSelector: jest.fn,
+    useDispatch: jest.fn
 }))
 
 /**
