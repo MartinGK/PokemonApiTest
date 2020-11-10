@@ -28,7 +28,7 @@ describe("pokemons dispatcher", () => {
     })
 
     test("search-input functionality", () => {
-        const inputContainer = findByTestAttr(wrapper, "search-input", "div");
+        const inputContainer = findByTestAttr(wrapper, "search-input");
         const input = inputContainer.find(`input`);
         const button = findByTestAttr(wrapper, "search-button", "button");
 
