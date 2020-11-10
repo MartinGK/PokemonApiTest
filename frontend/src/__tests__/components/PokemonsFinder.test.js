@@ -65,7 +65,6 @@ describe("PokemonsFinder functionality", () => {
 
     test("search-input functionality", () => {
         const input = findByTestAttr(wrapper, "search-input");
-        console.log(input)
         input.simulate("change", {
             target: { value: "pikachu" }
         })
