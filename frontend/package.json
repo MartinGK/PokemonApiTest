@@ -18,7 +18,7 @@
   "proxy": "http://127.0.0.1:4000",
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && (cd backend && yarn install)",
+    "build": "react-scripts build",
     "test": "react-scripts test  --env=jsdom --verbose",
     "eject": "react-scripts eject"
   },
