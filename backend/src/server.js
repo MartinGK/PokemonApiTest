@@ -11,7 +11,7 @@ app.use(cors())
 // Serve static assets in production
 if (process.env.NODE_ENV === 'production') {
     // Set static folder
-    app.use(express.static(path.join(__dirname, '../frontend/build')))
+    app.use(express.static(path.join(__dirname, '../../frontend/build')))
 
     app.get('*', (request, response) => {
         response.sendFile(path.join(__dirname + '../../frontend/build/index.html'))
