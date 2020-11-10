@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm start\" ",
     "start": "concurrently \"cd backend && npm install && npm start\" \"npm install --prefix frontend && npm run build --prefix frontend\" ",
-    "client-install": "npm install --prefix frontend",
-    "client": "npm start --prefix frontend",
+    "install":"concurrently \"cd backend && npm i\" \"cd frontend && npm i\" ",
     "heroku-postbuild": "npm install --prefix frontend && npm run build --prefix frontend"
   },
   "repository": {

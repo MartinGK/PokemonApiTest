@@ -2,11 +2,21 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const pokemonRouter = require('./routes/pokemons')
-
+const path = require('path')
 const app = express();
 
 /***CONFIGURATIONS***/
 app.use(cors())
+
+// Serve static assets in production
+if (process.env.NODE_ENV === 'production') {
+    // Set static folder
+    app.use(express.static('client/build'));
+
+    app.get('*', (request, response) => {
+        response.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+    });
+}
 
 /***MIDDLEWARES***/
 app.use(bodyParser.urlencoded({ extended: true }));
