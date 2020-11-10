@@ -5,7 +5,6 @@ import { findByTestAttr, storeFactory } from 'helpers/testUtils'
 import { Provider } from 'react-redux';
 import { getPokemons } from 'store/actions/pokemonsActions';
 import { createMount } from '@material-ui/core/test-utils';
-import TextField from '@material-ui/core/TextField';
 
 jest.mock("react-redux", () => {
     return {
