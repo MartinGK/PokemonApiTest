@@ -27,7 +27,7 @@ export default function PageHeader() {
         <Grid container component="header" spacing={3} className={classes.header}>
             <Grid item xs={12} >
                 <Typography variant="h2" component="h1" data-test="page-title" className={classes.pageTitle}>
-                    Pokemon Finder
+                    Pokémon Finder
   </Typography>
                 <Typography variant="h5" component="h3" data-test="page-subtitle" className={classes.pageSubtitle}>
                     El que quiere Pokemons, que los busque.
