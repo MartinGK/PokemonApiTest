@@ -1,8 +1,6 @@
 # PokemonFinder
 
-_Flydevs test project_
--
-_In this app you can find all the pokemons that you want_
+_Flydevs test project - In this app you can find all the pokemons that you want_
 
  [Demo](https://pokemonfinder-martingk.herokuapp.com/)
 
