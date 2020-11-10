@@ -1,7 +1,7 @@
 import { POKEMONS_UPDATE, ERROR} from "store/actions/types";
 
 export const getPokemons = (name) => dispatch => {
-    fetch(`/pokemon/${name}`,{
+    return fetch(`/pokemon/${name}`,{
         method: 'GET'
         })
         .then(res => res.json())

@@ -5,7 +5,6 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import List from '@material-ui/core/List';
 import ListItemText from '@material-ui/core/ListItemText';
-import Divider from '@material-ui/core/Divider';
 import Box from '@material-ui/core/Box';
 import { useSelector } from 'react-redux';
 
@@ -43,11 +42,6 @@ const useStyles = makeStyles((theme) => ({
 export default function PokemonsResult() {
     const pokemons = useSelector(state => state.pokemons.result)
     const classes = useStyles();
-
-    // React.useEffect(() => {
-    //     console.log("pokemons")
-    //     console.log(pokemons)
-    // }, [pokemons])
 
     return (
         <Grid container component="div" spacing={3} data-test="search-result-container" className={classes.searchResultContainer}>

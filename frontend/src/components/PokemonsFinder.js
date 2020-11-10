@@ -32,11 +32,21 @@ export default function PokemonsFinder() {
         dispatch(getPokemons(pokemonName))
     }
 
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            dispatch(getPokemons(pokemonName))
+        }
+    }
+
     return (
         <Grid container component="div" spacing={3} >
             <Grid item xs={8}>
                 {/* Pokemons Finder */}
                 <TextField
+                    inputProps={{
+                        "data-test": "search-input"
+                    }}
+                    onKeyUp={handleKeyPress}
                     id="pokemonInput"
                     value={pokemonName}
                     type="text"
@@ -44,7 +54,6 @@ export default function PokemonsFinder() {
                     variant="outlined"
                     fullWidth
                     onChange={e => setPokemonName(e.target.value)}
-                    data-test="search-input"
                     className={classes.pokemonInput}
                 />
             </Grid>

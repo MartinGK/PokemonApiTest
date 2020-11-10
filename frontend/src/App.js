@@ -1,8 +1,6 @@
-import Typography from '@material-ui/core/Typography';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
 import { createStore, applyMiddleware, compose } from "redux";
 import allReducers from 'store/reducers';
 import thunkMiddleware from "redux-thunk";
@@ -53,7 +51,8 @@ const useStyles = makeStyles((theme) => ({
     height: '100vh',
     display: 'grid',
     gridTemplateRows: "1fr 1fr 8fr 1fr",
-    gridGap: "16px"
+    gridGap: "16px",
+    background: "#FFFFF2"
   },
 }));
 

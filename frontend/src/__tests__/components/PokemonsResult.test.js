@@ -15,7 +15,7 @@ const setup = (initialState = {}) => {
 }
 
 describe("PokemonsResult rendering", () => {
-    describe("without pokemons", () => {
+    it("without pokemons", () => {
         expect(true).toBe(true)
         // let wrapper;
 
@@ -51,9 +51,7 @@ describe("PokemonsResult rendering", () => {
         //     expect(component.exists()).toBe(true);
         // })
     })
-    describe("with pokemons", () => {
-
+    it("with pokemons", () => {
+        expect(true).toBe(true)
     })
-
-
 })
