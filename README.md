@@ -5,9 +5,6 @@ _In this app you can find all the pokemons that you want_
 
  [Demo](https://pokemonfinder-martingk.herokuapp.com/)
 
-
-<!-- ## Starting 🚀 -->
-
 ### Instalation 🔧
 
 _To run it locally you have to clone the repo_
@@ -17,7 +14,7 @@ git clone https://github.com/MartinGK/PokemonApiTest.git
 ```
 
 ```
-cd PokemonApiTest && npm run install
+cd PokemonApiTest && npm install
 ```
 
 ```
@@ -26,32 +23,15 @@ npm run dev
 
 ## Testing ⚙️
 
-_Currently only have React testing with Jest and enzyme_
-
+_Currently Pokemon Finder have React testing with Jest and enzyme_
 
 ```
 cd frontend && npm run test
 ```
 
-<!-- ### Analice las pruebas end-to-end 🔩
-
-_Explica que verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
-``` -->
-<!-- 
-### Y las pruebas de estilo de codificación ⌨️
-
-_Explica que verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
-``` -->
-
 ## Deploy 📦
 
-_The page is being deployed at heroku_
+_The page is being deployed in [heroku](https://pokemonfinder-martingk.herokuapp.com/)_
 
 ## Builded with 🛠️
 
@@ -61,8 +41,6 @@ _The page is being deployed at heroku_
 * [Jest](https://jestjs.io/) - A delightful JavaScript Testing Framework with a focus on simplicity
 * [PokeApi](https://pokeapi.co/) - The RESTful Pokémon API
 
-## Autores ✒️
+## Authors ✒️
 
-_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
-
-* **Martin Gainza Koulaksezian** - [villanuevand](https://github.com/MartinGK)
+* **Martin Gainza Koulaksezian** - [MartinGK](https://github.com/MartinGK)

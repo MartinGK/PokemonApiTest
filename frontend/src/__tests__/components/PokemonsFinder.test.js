@@ -1,36 +1,53 @@
 import React from 'react';
-import { mount } from 'enzyme';
+// import { mount } from 'enzyme';
 import PokemonsFinder from 'components/PokemonsFinder';
-import { findByTestAttr } from 'helpers/testUtils'
-import createMockStore from 'redux-mock-store'
+import { findByTestAttr, storeFactory } from 'helpers/testUtils'
 import { Provider } from 'react-redux';
-import thunk from 'redux-thunk'
 import { getPokemons } from 'store/actions/pokemonsActions';
+import { createMount } from '@material-ui/core/test-utils';
+import TextField from '@material-ui/core/TextField';
 
-// now we have access to the store instance
-const middlewares = [thunk];
-const mockStore = createMockStore(middlewares);
-const store = mockStore({});
+jest.mock("react-redux", () => {
+    return {
+        ...jest.requireActual("react-redux"),
+        useDispatch: () => jest.fn(),
+        // we ensure that these are original  
+    };
+});
+jest.mock("store/actions/pokemonsActions", () => {
+    return {
+        getPokemons: jest.fn(),
+    };
+});
 
-jest.mock('store/actions/pokemonsActions', () => ({
-    getPokemons: jest.fn().mockImplementation(() => 'pikachu')
-}))
+let store;
+let mount;
 
-const setup = () => {
-    const component = mount(<Provider store={store}>
+const setup = (initialState = {}) => {
+    mount = createMount();
+    store = storeFactory(initialState);
+    // const wrapper = mount(<Provider store={store}>
+    //     <PokemonsFinder />
+    // </Provider>).dive().dive();
+    const wrapper = mount(<Provider store={store}>
         <PokemonsFinder />
     </Provider>);
-    return component;
+    return wrapper;
 }
+
+// jest.mock('store/actions/pokemonsActions', () => ({
+//     getPokemons: jest.fn().mockImplementation(() => 'pikachu')
+// }))
 
 describe("PokemonsFinder rendering", () => {
     let wrapper;
 
     beforeEach(() => {
-        wrapper = setup({ pokemons: [] });
-        const globalStore = wrapper.find(Provider).prop("store");
-        jest.fn().mockImplementation(action => {
-            return globalStore.dispatch(action)
+        wrapper = setup({
+            pokemons: {
+                error: '',
+                result: []
+            }
         });
     })
 
@@ -53,25 +70,22 @@ describe("PokemonsFinder functionality", () => {
 
     beforeEach(() => {
         wrapper = setup({ pokemons: [] });
-        const globalStore = wrapper.find(Provider).prop("store");
-        jest.fn().mockImplementation(action => {
-            return globalStore.dispatch(action)
-        });
     })
 
     afterEach(() => {
         wrapper.unmount();
     })
 
-    test("search-input functionality", () => {
-        const input = findByTestAttr(wrapper, "search-input");
-        input.simulate("change", {
-            target: { value: "pikachu" }
+    describe("search-input functionality", () => {
+        test("search-input functionality with button", () => {
+            const input = findByTestAttr(wrapper, "search-input", "input").at(0);
+            input.simulate("change", {
+                target: { value: "pikachu" }
+            })
+            const button = findByTestAttr(wrapper, "search-button", "button");
+            button.simulate("click");
+            expect(getPokemons).toHaveBeenCalledWith("pikachu");
         })
-        const button = findByTestAttr(wrapper, "search-button", "button");
-        // button.simulate("click");
-        expect(true).toBe(true)
-        // expect(getPokemons).toHaveBeenCalledWith("pikachu");
     })
 })
 

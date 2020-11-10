@@ -1,4 +1,3 @@
-import { useSelector } from 'react-redux';
 import { createStore } from 'redux';
 import rootReducers from 'store/reducers';
 
@@ -11,39 +10,6 @@ import rootReducers from 'store/reducers';
  */
 export const storeFactory = (initialState) => {
     return createStore(rootReducers, initialState);
-}
-
-/**
- * mocks react-redux functions
- */
-export const initialMockRedux = ()=>{
-    jest.mock("react-redux", () => {
-        const { Provider, useSelector } = jest.requireActual("react-redux");
-        return {
-            ...jest.requireActual("react-redux"),
-            // useDispatch: jest.fn(),
-            // we ensure that these are original  
-            useSelector,
-            Provider
-        };
-    });
-}
-/**
- * replace the useSelector callback.
- * @param {object} store - store object
- * @return {object} store - store object
- */
-export const replaceUseSelector = (store) => {
-    useSelector.mockImplementation((callback) => {
-        return callback(store);
-    })
-}
-
-/**
- * clean the useSelector mock
- */
-export const cleanUseSelector = () => {
-    useSelector.mockClear();
 }
 
 /**

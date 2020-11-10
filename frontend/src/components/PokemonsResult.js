@@ -22,7 +22,6 @@ const useStyles = makeStyles((theme) => ({
         width: "100%",
         height: "100%",
         padding: 0
-        // maxHeight: '22rem'
     },
     searchResultContainer: {
         display: "grid",
@@ -48,14 +47,12 @@ export default function PokemonsResult() {
             <Typography variant="h3" component="h2" data-test="container-title" className={classes.title}>
                 Resultados de la Búsqueda
   </Typography>
-            {/* TESTEAR QUE EXISTE O NO EL POKEMON-LIST */}
             <Box style={{ position: "relative", width: "100%" }} data-test="result-container">
                 {pokemons && pokemons.length ?
                     <List data-test="pokemon-list" className={classes.resultList}>
 
                         {pokemons.map(poke => {
-                            return <>
-                                <ListItem alignItems="center" className={classes.listItem}>
+                            return <ListItem key={poke.name} data-test="pokemon-item" alignItems="center" className={classes.listItem}>
                                     <ListItemAvatar style={poke.sprite ? {} : { padding: "20px" } }>
                                         <img src={poke.sprite ? poke.sprite : '/pokeball.svg'} alt={poke.name} title={poke.name} />
                                     </ListItemAvatar>
@@ -64,7 +61,6 @@ export default function PokemonsResult() {
                                         primary={poke.name}
                                     />
                                 </ListItem>
-                            </>
                         })}
                     </List>
                     : null}

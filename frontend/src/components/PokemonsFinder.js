@@ -15,12 +15,6 @@ const useStyles = makeStyles((theme) => ({
             padding: "8px 14px"
         }
     },
-    searchInputButton: {
-        // alignSelf: 'center',
-        // background: "linear-gradient(180deg, rgba(255,28,28,1) 0%, rgba(255,28,28,1) 49%, rgba(0,0,0,1) 50%, rgba(255,255,255,1) 51%, rgba(255,255,255,1) 100%)",
-        // fontWeight:"bolder",
-        // color:"black"
-    }
 }));
 
 export default function PokemonsFinder() {
@@ -28,28 +22,24 @@ export default function PokemonsFinder() {
     const [pokemonName, setPokemonName] = React.useState("");
     const dispatch = useDispatch()
 
-    const searchPokemons = () => {
+    const searchPokemons = (e) => {
+        e.preventDefault();
         dispatch(getPokemons(pokemonName))
     }
 
-    const handleKeyPress = (e) => {
-        if (e.key === 'Enter') {
-            dispatch(getPokemons(pokemonName))
-        }
-    }
-
     return (
-        <Grid container component="div" spacing={3} >
+        <Grid container component="form" spacing={3} >
             <Grid item xs={8}>
-                {/* Pokemons Finder */}
                 <TextField
                     inputProps={{
                         "data-test": "search-input"
                     }}
-                    onKeyUp={handleKeyPress}
+                    // onKeyUp={handleKeyPress}
+                    // data-test="search-input"
                     id="pokemonInput"
                     value={pokemonName}
                     type="text"
+                    name="pokemonInput"
                     placeholder="Ingrese el nombre a buscar"
                     variant="outlined"
                     fullWidth
@@ -62,6 +52,7 @@ export default function PokemonsFinder() {
                     variant="contained"
                     color="primary"
                     fullWidth
+                    type="submit"
                     onClick={searchPokemons}
                     className={classes.searchInputButton}
                     data-test="search-button">
