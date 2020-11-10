@@ -39,6 +39,7 @@ _The page is being deployed in [heroku](https://pokemonfinder-martingk.herokuapp
 * [Redux](https://redux.js.org/) - A Predictable State Container for JS Apps
 * [Node.js](https://nodejs.org/en/) - A JavaScript runtime built on Chrome's V8 JavaScript engine.
 * [Jest](https://jestjs.io/) - A delightful JavaScript Testing Framework with a focus on simplicity
+* [Enzyme](https://enzymejs.github.io/enzyme/?utm_source=next.36kr.com) - A JavaScript Testing utility for React that makes it easier to test your React Components' output.
 * [PokeApi](https://pokeapi.co/) - The RESTful Pokémon API
 
 ## Authors ✒️
