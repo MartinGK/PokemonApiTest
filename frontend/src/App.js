@@ -15,8 +15,7 @@ import PokemonsResult from 'components/PokemonsResult';
 
 const theme = createMuiTheme({
   typography: {
-    fontFamily: 'Pokemon GB',
-    fontSize: "62.5%"
+    fontFamily: 'Pokemon GB'
   },
   
   overrides: {
@@ -50,7 +49,7 @@ const store = createStore(
 
 const useStyles = makeStyles((theme) => ({
   app: {
-    padding: "1rem 3rem",
+    padding: "1rem 6rem",
     height: '100vh',
     display: 'grid',
     gridTemplateRows: "1fr 1fr 8fr 1fr",

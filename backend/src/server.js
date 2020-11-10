@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const pokemonRouter = require('./routes/pokemons')
 
 const app = express();
 
@@ -13,7 +14,7 @@ app.use(bodyParser.json());
 
 
 /***ROUTES***/
-// app.use('/pokemon', pokemonRouter);
+app.use('/pokemon', pokemonRouter);
 
 const PORT = process.env.PORT || 4000;
 

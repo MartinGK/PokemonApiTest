@@ -1,5 +1,5 @@
 import checkPropTypes from "check-prop-types";
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { createStore } from 'redux';
 import rootReducers from 'store/reducers';
 
@@ -15,14 +15,22 @@ export const storeFactory = (initialState) => {
 }
 
 /**
- * mocks useSelector function
+ * mocks react-redux functions
  */
-jest.mock("react-redux", () => ({
-    ...jest.requireActual("react-redux"),
-    useSelector: jest.fn,
-    useDispatch: jest.fn
-}))
-
+export const initialMockRedux = ()=>{
+    jest.mock("react-redux", () => {
+        const { Provider, useSelector } = jest.requireActual("react-redux");
+        return {
+            ...jest.requireActual("react-redux"),
+            useDispatch: jest.fn(),
+            // we ensure that these are original  
+            useSelector,
+            Provider
+        };
+    });
+    
+    
+}
 /**
  * replace the useSelector callback.
  * @param {object} store - store object
@@ -45,10 +53,11 @@ export const cleanUseSelector = () => {
  * Return node(s) with given data-test attribute.
  * @param {shallowWrapper} wrapper - Enzyme shallow wrapper
  * @param {string} val - Value of data-test attribute for search
+ * @param {string} comp - Component if you want to be more precise
  * @return {shallowWrapper}
  */
-export const findByTestAttr = (wrapper, val) => {
-    return wrapper.find(`[data-test="${val}"]`);
+export const findByTestAttr = (wrapper, val, comp="") => {
+    return wrapper.find(`${comp}[data-test="${val}"]`);
 }
 
 /**

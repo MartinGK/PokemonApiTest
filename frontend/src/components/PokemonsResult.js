@@ -33,6 +33,9 @@ const useStyles = makeStyles((theme) => ({
     listItem: {
         padding: "20px 10px",
         width: "90%"
+    },
+    title: {
+        fontSize: "1.5rem"
     }
 }));
 
@@ -48,7 +51,7 @@ export default function PokemonsResult() {
 
     return (
         <Grid container component="div" spacing={3} data-test="search-result-container" className={classes.searchResultContainer}>
-            <Typography variant="h3" component="h2" data-test="container-title">
+            <Typography variant="h3" component="h2" data-test="container-title" className={classes.title}>
                 Resultados de la Búsqueda
   </Typography>
             {/* TESTEAR QUE EXISTE O NO EL POKEMON-LIST */}
@@ -59,8 +62,8 @@ export default function PokemonsResult() {
                         {pokemons.map(poke => {
                             return <>
                                 <ListItem alignItems="center" className={classes.listItem}>
-                                    <ListItemAvatar>
-                                        <img src={poke.sprites.front_default} alt={poke.name} />
+                                    <ListItemAvatar style={poke.sprite ? {} : { padding: "20px" } }>
+                                        <img src={poke.sprite ? poke.sprite : '/pokeball.svg'} alt={poke.name} title={poke.name} />
                                     </ListItemAvatar>
                                     <ListItemText
                                         className={classes.pokemonName}

@@ -1,14 +1,14 @@
 import { POKEMONS_UPDATE, ERROR} from "store/actions/types";
 
 export const getPokemons = (name) => dispatch => {
-    fetch(`https://pokeapi.co/api/v2/pokemon/${name}`,{
+    fetch(`/pokemon/${name}`,{
         method: 'GET'
         })
         .then(res => res.json())
         .then(data => {
             dispatch({
                 type: POKEMONS_UPDATE,
-                payload: [data,data,data,data,data,data,data,data,data,data,data,data,data,data,data,data,data,data,data,data,data,data,data,data]
+                payload: data
             })
         }).catch(error => {
             dispatch({
