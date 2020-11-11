@@ -1,5 +1,4 @@
 import React from 'react';
-// import { mount } from 'enzyme';
 import PokemonsFinder from 'components/PokemonsFinder';
 import { findByTestAttr, storeFactory } from 'helpers/testUtils'
 import { Provider } from 'react-redux';
@@ -10,7 +9,6 @@ jest.mock("react-redux", () => {
     return {
         ...jest.requireActual("react-redux"),
         useDispatch: () => jest.fn(),
-        // we ensure that these are original  
     };
 });
 jest.mock("store/actions/pokemonsActions", () => {
@@ -25,18 +23,12 @@ let mount;
 const setup = (initialState = {}) => {
     mount = createMount();
     store = storeFactory(initialState);
-    // const wrapper = mount(<Provider store={store}>
-    //     <PokemonsFinder />
-    // </Provider>).dive().dive();
     const wrapper = mount(<Provider store={store}>
         <PokemonsFinder />
     </Provider>);
     return wrapper;
 }
 
-// jest.mock('store/actions/pokemonsActions', () => ({
-//     getPokemons: jest.fn().mockImplementation(() => 'pikachu')
-// }))
 
 describe("PokemonsFinder rendering", () => {
     let wrapper;
